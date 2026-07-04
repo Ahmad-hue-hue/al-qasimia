@@ -1,11 +1,8 @@
-"use client";
-
 import { cva, type VariantProps } from "class-variance-authority";
-import { motion, type HTMLMotionProps } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-[color,transform] duration-150 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
@@ -29,7 +26,7 @@ const buttonVariants = cva(
 );
 
 export interface ButtonProps
-  extends Omit<HTMLMotionProps<"button">, "ref">,
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {}
 
 export function Button({
@@ -40,13 +37,9 @@ export function Button({
   ...props
 }: ButtonProps) {
   return (
-    <motion.button
-      whileTap={{ scale: 0.98 }}
-      className={cn(buttonVariants({ variant, size, className }))}
-      {...props}
-    >
+    <button className={cn(buttonVariants({ variant, size, className }))} {...props}>
       {children}
-    </motion.button>
+    </button>
   );
 }
 
@@ -58,15 +51,14 @@ export function ButtonLink({
   children,
   ...props
 }: Omit<ButtonProps, "href"> &
-  React.ComponentPropsWithoutRef<"a"> & { href: string }) {
+  React.AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }) {
   return (
-    <motion.a
+    <a
       href={href}
-      whileTap={{ scale: 0.98 }}
       className={cn(buttonVariants({ variant, size, className }))}
-      {...(props as HTMLMotionProps<"a">)}
+      {...props}
     >
       {children}
-    </motion.a>
+    </a>
   );
 }

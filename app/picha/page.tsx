@@ -22,7 +22,7 @@ export default function PichaPage() {
         {galleryItems.map((item, i) => (
           <li key={item.id}>
             <Reveal delay={i * 0.06}>
-              <figure className="overflow-hidden border border-gold/20 bg-card">
+              <figure className="gallery-item overflow-hidden border border-gold/20 bg-card">
                 <div className="flex aspect-[4/3] flex-col items-center justify-center gap-3 bg-gold/5 p-6 text-center">
                   <ImageIcon weight="duotone" className="h-12 w-12 text-gold/60" aria-hidden="true" />
                   <span className="rounded-sm bg-charcoal px-3 py-1 text-xs font-bold uppercase tracking-wider text-cream">

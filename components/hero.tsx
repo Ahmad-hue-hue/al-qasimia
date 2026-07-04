@@ -1,7 +1,6 @@
 "use client";
 
 import { ArrowRight, ChatsCircle } from "@phosphor-icons/react";
-import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import { HeroEmblem } from "@/components/logo";
 import { HeroParticles } from "@/components/hero-particles";
@@ -16,29 +15,34 @@ export function Hero() {
     const root = rootRef.current;
     if (!root) return;
 
-    const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    if (prefersReduced) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-      tl.from(".hero-arabic", { opacity: 0, y: 12, duration: 0.5 })
-        .from(".hero-location", { opacity: 0, duration: 0.4 }, "-=0.2")
-        .from(".hero-title", { opacity: 0, y: 28, duration: 0.7 }, "-=0.1")
-        .from(".hero-tagline", { opacity: 0, y: 16, duration: 0.5 }, "-=0.35")
-        .from(".hero-body", { opacity: 0, y: 12, duration: 0.5 }, "-=0.25")
-        .from(".hero-offer", { opacity: 0, scale: 0.96, duration: 0.45 }, "-=0.2")
-        .from(".hero-cta", { opacity: 0, y: 10, duration: 0.4 }, "-=0.15")
-        .from(".hero-emblem", { opacity: 0, scale: 0.92, duration: 0.9 }, 0.15)
-        .from(
-          ".hero-ray",
-          { scaleY: 0, opacity: 0, duration: 0.6, stagger: 0.02 },
-          0.35,
-        );
-    }, root);
+    let cleanup: (() => void) | undefined;
 
-    return () => ctx.revert();
+    void (async () => {
+      const { default: gsap } = await import("gsap");
+
+      const ctx = gsap.context(() => {
+        const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+        tl.from(".hero-arabic", { opacity: 0, y: 12, duration: 0.5 })
+          .from(".hero-location", { opacity: 0, duration: 0.4 }, "-=0.2")
+          .from(".hero-title", { opacity: 0, y: 28, duration: 0.7 }, "-=0.1")
+          .from(".hero-tagline", { opacity: 0, y: 16, duration: 0.5 }, "-=0.35")
+          .from(".hero-body", { opacity: 0, y: 12, duration: 0.5 }, "-=0.25")
+          .from(".hero-offer", { opacity: 0, scale: 0.96, duration: 0.45 }, "-=0.2")
+          .from(".hero-cta", { opacity: 0, y: 10, duration: 0.4 }, "-=0.15")
+          .from(".hero-emblem", { opacity: 0, scale: 0.92, duration: 0.9 }, 0.15)
+          .from(
+            ".hero-ray",
+            { scaleY: 0, opacity: 0, duration: 0.6, stagger: 0.02 },
+            0.35,
+          );
+      }, root);
+
+      cleanup = () => ctx.revert();
+    })();
+
+    return () => cleanup?.();
   }, []);
 
   return (
@@ -82,7 +86,7 @@ export function Hero() {
           <div className="hero-cta mt-8 flex flex-wrap gap-3">
             <ButtonLink href="/udahili" size="lg">
               Anza usajili
-              <ArrowRight weight="duotone" className="h-5 w-5" />
+              <ArrowRight weight="duotone" className="h-5 w-5" aria-hidden="true" />
             </ButtonLink>
             <ButtonLink
               href={siteConfig.whatsapp.href()}
@@ -91,7 +95,7 @@ export function Hero() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <ChatsCircle weight="duotone" className="h-5 w-5" />
+              <ChatsCircle weight="duotone" className="h-5 w-5" aria-hidden="true" />
               WhatsApp
             </ButtonLink>
           </div>

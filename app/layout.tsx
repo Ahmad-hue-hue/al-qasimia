@@ -22,6 +22,8 @@ const scheherazade = Scheherazade_New({
   subsets: ["arabic", "latin"],
   weight: ["400", "700"],
   variable: "--font-arabic",
+  display: "swap",
+  preload: false,
 });
 
 const ibmPlexSans = IBM_Plex_Sans({

@@ -1,11 +1,9 @@
-"use client";
-
 import {
   BookOpen,
   GraduationCap,
   Heart,
   Microphone,
-} from "@phosphor-icons/react";
+} from "@phosphor-icons/react/dist/ssr";
 import { ButtonLink } from "@/components/ui/button";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
@@ -45,7 +43,7 @@ export function ProgramCard({
         </span>
       )}
       <div className="mb-2 flex items-center gap-2 text-gold">
-        <Icon weight="duotone" className="h-5 w-5" />
+        <Icon weight="duotone" className="h-5 w-5" aria-hidden="true" />
         <h3 className="font-display text-lg text-foreground">{title}</h3>
       </div>
       <p className="text-sm leading-relaxed text-muted-foreground">

@@ -107,4 +107,28 @@ body::before {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+
+  .whatsapp-float {
+    animation: none !important;
+  }
+}
+
+.whatsapp-float {
+  animation: whatsapp-enter 0.45s ease-out 0.6s both;
+}
+
+@keyframes whatsapp-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.gallery-item {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 320px;
 }

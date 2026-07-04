@@ -1,7 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // bundle-barrel-imports / tree-shake heavy icon & 3D packages
+  experimental: {
+    optimizePackageImports: [
+      "@phosphor-icons/react",
+      "@react-three/fiber",
+      "@react-three/drei",
+      "three",
+    ],
+  },
 };
 
 export default nextConfig;
