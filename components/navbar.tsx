@@ -26,7 +26,7 @@ export function Navbar() {
               key={item.href}
               href={item.href}
               className={cn(
-                "px-3 py-2 text-sm font-medium transition-colors",
+                "px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2",
                 pathname === item.href
                   ? "text-heading underline decoration-gold decoration-2 underline-offset-8"
                   : "text-foreground/75 hover:text-heading",
@@ -41,7 +41,7 @@ export function Navbar() {
           <ThemeToggle />
           <button
             type="button"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/30 md:hidden"
+            className="touch-target flex h-11 w-11 items-center justify-center rounded-full border border-gold/30 md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
             aria-label={open ? "Funga menyu" : "Fungua menyu"}
             onClick={() => setOpen((v) => !v)}
           >

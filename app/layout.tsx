@@ -6,6 +6,7 @@ import {
 } from "next/font/google";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
+import { SkipLink } from "@/components/skip-link";
 import { ThemeProvider } from "@/components/theme-provider";
 import { WhatsAppFloatButton } from "@/components/whatsapp-float-button";
 import { siteConfig } from "@/lib/site-config";
@@ -47,6 +48,11 @@ export const metadata: Metadata = {
   ],
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -58,10 +64,13 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${libreBaskerville.variable} ${scheherazade.variable} ${ibmPlexSans.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col font-body antialiased">
+      <body className="min-h-dvh flex flex-col font-body antialiased touch-manipulation">
         <ThemeProvider>
+          <SkipLink />
           <Navbar />
-          <main className="flex-1">{children}</main>
+          <main id="main-content" tabIndex={-1} className="flex-1 pb-24 outline-none">
+            {children}
+          </main>
           <Footer />
           <WhatsAppFloatButton />
         </ThemeProvider>

@@ -14,7 +14,7 @@ export function ThemeToggle() {
     return (
       <button
         aria-label="Badilisha mandhari"
-        className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/30"
+        className="touch-target flex h-11 w-11 items-center justify-center rounded-full border border-gold/30"
       />
     );
   }
@@ -26,7 +26,7 @@ export function ThemeToggle() {
       type="button"
       aria-label={isDark ? "Washa mandhari ya mwanga" : "Washa mandhari ya giza"}
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="flex h-10 w-10 items-center justify-center rounded-full border border-gold/30 text-gold transition-colors hover:bg-gold/10"
+        className="touch-target flex h-11 w-11 items-center justify-center rounded-full border border-gold/30 text-gold transition-colors hover:bg-gold/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2"
     >
       {isDark ? (
         <Sun weight="duotone" className="h-5 w-5" />

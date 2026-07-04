@@ -42,21 +42,24 @@ export function Footer() {
               <MapPin weight="duotone" className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
               {siteConfig.location}
             </li>
-            {siteConfig.phones.slice(0, 2).map((phone) => (
-              <li key={phone.tel} className="flex items-center gap-2">
-                <Phone weight="duotone" className="h-4 w-4 shrink-0 text-gold" />
-                <a href={`tel:${phone.tel}`} className="hover:text-heading">
+            {siteConfig.phones.map((phone) => (
+              <li key={phone.tel}>
+                <a
+                  href={`tel:${phone.tel}`}
+                  className="flex min-h-11 items-center gap-2 hover:text-heading"
+                >
+                  <Phone weight="duotone" className="h-4 w-4 shrink-0 text-gold" aria-hidden="true" />
                   {phone.number}
                 </a>
               </li>
             ))}
-            <li className="flex items-center gap-4 pt-2">
+            <li className="flex gap-2 pt-2">
               <a
                 href={siteConfig.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={siteConfig.social.instagramLabel}
-                className="text-gold transition-opacity hover:opacity-80"
+                className="touch-target inline-flex items-center justify-center text-gold transition-opacity hover:opacity-80"
               >
                 <InstagramLogo weight="duotone" className="h-5 w-5" />
               </a>
@@ -65,7 +68,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={siteConfig.social.facebookLabel}
-                className="text-gold transition-opacity hover:opacity-80"
+                className="touch-target inline-flex items-center justify-center text-gold transition-opacity hover:opacity-80"
               >
                 <FacebookLogo weight="duotone" className="h-5 w-5" />
               </a>
