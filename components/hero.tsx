@@ -3,7 +3,7 @@
 import { ArrowRight, ChatsCircle } from "@phosphor-icons/react";
 import { useEffect, useRef } from "react";
 import { HeroEmblem } from "@/components/logo";
-import { HeroParticles } from "@/components/hero-particles";
+import { HeroVideoBackground } from "@/components/hero-video-background";
 import { OfferBadge } from "@/components/program-card";
 import { ButtonLink } from "@/components/ui/button";
 import { siteConfig } from "@/lib/site-config";
@@ -45,9 +45,9 @@ export function Hero() {
       ref={rootRef}
       className="relative overflow-hidden border-b border-gold/15 pb-14 pt-8 sm:pb-20 sm:pt-12"
     >
-      <HeroParticles />
+      <HeroVideoBackground />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-6">
+      <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-6">
         <div>
           <p
             className="hero-arabic font-arabic text-2xl leading-none text-gold sm:text-3xl"

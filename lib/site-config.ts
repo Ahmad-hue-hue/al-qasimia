@@ -6,6 +6,9 @@ export const siteConfig = {
     src: "/logo.png",
     alt: "Al Qasimia Tahfidhul Qur'an — nembo ya shule",
   },
+  heroVideo: {
+    src: "/hero-bg.mp4",
+  },
   location: "Nzuguni, Dodoma, Tanzania",
   whatsapp: {
     number: "255712326190",
