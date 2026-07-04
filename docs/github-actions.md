@@ -23,7 +23,14 @@ Add these under **Settings → Secrets and variables → Actions**:
 
 Docs: [Using secrets in GitHub Actions](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions)
 
-If these secrets are **not** set, the deploy job skips the Vercel action step and succeeds — production still deploys through the [Vercel GitHub integration](https://vercel.com/docs/deployments/git) already linked to this repo.
+### Optional: deploy via Actions
+
+GitHub [does not allow `secrets` in `if` conditions](https://docs.github.com/en/actions/learn-github-actions/expressions#availability-of-contexts). To enable the Vercel action step:
+
+1. Add the three secrets above.
+2. Set repository variable **`DEPLOY_VIA_ACTIONS`** = `true` under **Settings → Secrets and variables → Actions → Variables**.
+
+If **`DEPLOY_VIA_ACTIONS`** is not `true`, the deploy job skips the Vercel action and succeeds. Production still deploys through the [Vercel GitHub integration](https://vercel.com/docs/deployments/git) linked to this repo.
 
 ### Production environment
 

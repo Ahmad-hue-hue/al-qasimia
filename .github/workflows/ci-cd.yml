@@ -1,6 +1,8 @@
 # CI/CD for Al Qasimia — lint, build on PR/push; deploy to Vercel on main.
 # Docs: https://docs.github.com/en/actions/get-started/continuous-integration
 #       https://docs.github.com/en/actions/how-tos/deploy/configure-and-manage-deployments/control-deployments
+# Note: Secrets cannot be used in job/step if conditions — use a repo variable instead:
+#       https://docs.github.com/en/actions/learn-github-actions/expressions#availability-of-contexts
 
 name: CI/CD
 
@@ -10,12 +12,10 @@ on:
   pull_request:
     branches: [main]
 
-# Least-privilege token — https://docs.github.com/en/actions/reference/security/secure-use
 permissions:
   contents: read
   deployments: write
 
-# Cancel superseded runs on the same branch — https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-concurrency
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -53,7 +53,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
-    # Track production deployments — https://docs.github.com/en/actions/concepts/workflows-and-actions/deployment-environments
     environment:
       name: production
       url: https://al-qasimia.vercel.app
@@ -66,8 +65,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Set repository variable DEPLOY_VIA_ACTIONS=true to enable this step.
+      # Production deploys also run via the Vercel GitHub integration when unset.
       - name: Deploy to Vercel
-        if: ${{ secrets.VERCEL_TOKEN != '' }}
+        if: vars.DEPLOY_VIA_ACTIONS == 'true'
         uses: amondnet/vercel-action@v25
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
@@ -76,8 +77,8 @@ jobs:
           vercel-args: "--prod"
           working-directory: ./
 
-      - name: Skip deploy (secrets not configured)
-        if: ${{ secrets.VERCEL_TOKEN == '' }}
+      - name: Note (Actions deploy disabled)
+        if: vars.DEPLOY_VIA_ACTIONS != 'true'
         run: |
-          echo "VERCEL_TOKEN not set — skipping Actions deploy."
-          echo "Production deploys still run via the Vercel GitHub integration."
+          echo "DEPLOY_VIA_ACTIONS is not 'true' — skipping Vercel action deploy."
+          echo "Production deploys run via the Vercel GitHub integration."
