@@ -47,8 +47,8 @@ export function Hero() {
     >
       <HeroVideoBackground />
 
-      <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-6">
-        <div className="hero-copy rounded-2xl border border-gold/10 bg-background/35 p-5 backdrop-blur-[2px] sm:border-0 sm:bg-transparent sm:p-0 sm:backdrop-blur-none">
+      <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-6">
+        <div>
           <p
             className="hero-arabic font-arabic text-2xl leading-none text-gold sm:text-3xl"
             dir="rtl"
