@@ -8,7 +8,7 @@ export const siteConfig = {
   },
   location: "Nzuguni, Dodoma, Tanzania",
   whatsapp: {
-    number: "255719158880",
+    number: "255712326190",
     message:
       "Assalamu Alaykum, ningependa taarifa zaidi kuhusu Al Qasimia Tahfidhul Qur'an.",
     href() {
@@ -17,7 +17,7 @@ export const siteConfig = {
   },
   phones: [
     { label: "Simu / WhatsApp", number: "+255 674 248 190", tel: "+255674248190" },
-    { label: "Simu / WhatsApp", number: "+255 719 158 880", tel: "+255719158880" },
+    { label: "Simu / WhatsApp", number: "+255 712 326 190", tel: "+255712326190" },
     { label: "Simu / WhatsApp", number: "+255 716 200 414", tel: "+255716200414" },
   ],
   social: {
