@@ -12,10 +12,10 @@ export function LogoMark({
     <Image
       src={siteConfig.logo.src}
       alt={siteConfig.logo.alt}
-      width={512}
-      height={512}
+      width={626}
+      height={626}
       priority={priority}
-      className={`aspect-square object-contain ${className}`}
+      className={`aspect-square rounded-full object-cover ${className}`}
     />
   );
 }

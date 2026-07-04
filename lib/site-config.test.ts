@@ -37,7 +37,7 @@ describe("Site navigation", () => {
 
 describe("School branding", () => {
   it("serves the uploaded logo from the public folder", () => {
-    expect(siteConfig.logo.src).toBe("/logo.jpg");
+    expect(siteConfig.logo.src).toBe("/logo.png");
     expect(siteConfig.logo.alt).toMatch(/Al Qasimia/i);
   });
 });

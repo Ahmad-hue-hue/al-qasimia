@@ -3,7 +3,7 @@ export const siteConfig = {
   tagline: "Hifadhi Qur'an Kirahisi",
   motto: "Al-Qasimia, Nuru ya Maisha Yako",
   logo: {
-    src: "/logo.jpg",
+    src: "/logo.png",
     alt: "Al Qasimia Tahfidhul Qur'an — nembo ya shule",
   },
   location: "Nzuguni, Dodoma, Tanzania",
