@@ -21,7 +21,7 @@ export default function MawasilianoPage() {
         />
       </Reveal>
 
-      <div className="mt-10 grid gap-10 lg:grid-cols-2">
+      <div className="mt-10 max-w-xl">
         <Reveal delay={0.1}>
           <section className="space-y-6" aria-labelledby="contact-details-heading">
             <h2 id="contact-details-heading" className="sr-only">
@@ -82,27 +82,6 @@ export default function MawasilianoPage() {
                 Facebook
               </a>
             </div>
-          </section>
-        </Reveal>
-
-        <Reveal delay={0.15}>
-          <section aria-labelledby="map-heading">
-            <h2 id="map-heading" className="font-display text-xl text-foreground">
-              Ramani
-            </h2>
-            <div className="mt-4 overflow-hidden border border-gold/20">
-              <iframe
-                title="Ramani ya Nzuguni, Dodoma"
-                src={siteConfig.mapEmbed}
-                className="aspect-video w-full"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-              />
-            </div>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Ramani ya eneo — eneo halisi litathibitishwa na mteja.
-            </p>
           </section>
         </Reveal>
       </div>

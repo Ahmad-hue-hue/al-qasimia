@@ -2,6 +2,10 @@ export const siteConfig = {
   name: "Al Qasimia Tahfidhul Qur'an",
   tagline: "Hifadhi Qur'an Kirahisi",
   motto: "Al-Qasimia, Nuru ya Maisha Yako",
+  logo: {
+    src: "/logo.jpg",
+    alt: "Al Qasimia Tahfidhul Qur'an — nembo ya shule",
+  },
   location: "Nzuguni, Dodoma, Tanzania",
   whatsapp: {
     number: "255719158880",
@@ -22,14 +26,11 @@ export const siteConfig = {
     instagramLabel: "Al Qasimia Tahfidhul Qur'an",
     facebookLabel: "Al Qasimia Tahfidhul Qur'an",
   },
-  mapEmbed:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.0!2d35.739!3d-6.163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sNzuguni%2C%20Dodoma!5e0!3m2!1ssw!2stz!4v1700000000000!5m2!1ssw!2stz",
   nav: [
     { href: "/", label: "Nyumbani" },
     { href: "/kuhusu", label: "Kuhusu" },
     { href: "/mafunzo", label: "Mafunzo" },
     { href: "/udahili", label: "Udahili" },
-    { href: "/picha", label: "Picha" },
     { href: "/mawasiliano", label: "Mawasiliano" },
   ],
 } as const;
@@ -72,12 +73,3 @@ export const hadithQuote = {
   text: "Hakika Allah ana watu Wake maalumu miongoni mwa watu. Wakasema: \"Ni nani hao, ee Mtume wa Allah?\" Akasema: \"Ni watu wa Qur'an — wao ndio watu wa Allah na wateuliwa Wake.\"",
   source: "Hadith",
 };
-
-export const galleryItems = [
-  { id: 1, label: "Jengo la shule / msikiti", placeholder: true },
-  { id: 2, label: "Vyumba vya kulala (bweni)", placeholder: true },
-  { id: 3, label: "Darasa la kusoma Qur'an", placeholder: true },
-  { id: 4, label: "Wanafunzi wakisoma Qur'an", placeholder: true },
-  { id: 5, label: "Shughuli za shule", placeholder: true },
-  { id: 6, label: "Mazingira ya shule", placeholder: true },
-];

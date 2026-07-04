@@ -127,8 +127,3 @@ body::before {
     transform: scale(1);
   }
 }
-
-.gallery-item {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 320px;
-}

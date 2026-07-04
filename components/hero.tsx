@@ -31,12 +31,7 @@ export function Hero() {
           .from(".hero-body", { opacity: 0, y: 12, duration: 0.5 }, "-=0.25")
           .from(".hero-offer", { opacity: 0, scale: 0.96, duration: 0.45 }, "-=0.2")
           .from(".hero-cta", { opacity: 0, y: 10, duration: 0.4 }, "-=0.15")
-          .from(".hero-emblem", { opacity: 0, scale: 0.92, duration: 0.9 }, 0.15)
-          .from(
-            ".hero-ray",
-            { scaleY: 0, opacity: 0, duration: 0.6, stagger: 0.02 },
-            0.35,
-          );
+          .from(".hero-emblem", { opacity: 0, scale: 0.92, duration: 0.9 }, 0.15);
       }, root);
 
       cleanup = () => ctx.revert();

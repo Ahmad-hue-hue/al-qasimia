@@ -1,9 +1,5 @@
 import { describe, expect, it } from "vitest";
-import {
-  galleryItems,
-  programs,
-  siteConfig,
-} from "@/lib/site-config";
+import { programs, siteConfig } from "@/lib/site-config";
 
 describe("WhatsApp contact link", () => {
   it("opens chat with the configured number and pre-filled Swahili greeting", () => {
@@ -28,15 +24,21 @@ describe("School contact details", () => {
 });
 
 describe("Site navigation", () => {
-  it("exposes all six Swahili pages required by the brief", () => {
+  it("exposes the five Swahili pages for the live site", () => {
     expect(siteConfig.nav.map((item) => item.href)).toEqual([
       "/",
       "/kuhusu",
       "/mafunzo",
       "/udahili",
-      "/picha",
       "/mawasiliano",
     ]);
+  });
+});
+
+describe("School branding", () => {
+  it("serves the uploaded logo from the public folder", () => {
+    expect(siteConfig.logo.src).toBe("/logo.jpg");
+    expect(siteConfig.logo.alt).toMatch(/Al Qasimia/i);
   });
 });
 
@@ -46,12 +48,5 @@ describe("Programs offered", () => {
 
     expect(intensive?.title).toContain("miezi 6");
     expect(intensive?.description).toMatch(/Form Four|Kidato/i);
-  });
-});
-
-describe("Gallery placeholders", () => {
-  it("marks every gallery slot as a replaceable placeholder", () => {
-    expect(galleryItems.every((item) => item.placeholder === true)).toBe(true);
-    expect(galleryItems.length).toBeGreaterThanOrEqual(4);
   });
 });
