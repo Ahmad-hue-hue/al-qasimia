@@ -1,33 +1,37 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useMemo, useRef } from "react";
+import { useRef } from "react";
 import * as THREE from "three";
+
+const COUNT = 120;
+
+function pseudo(i: number, salt = 0) {
+  const x = Math.sin(i * 12.9898 + salt * 78.233) * 43758.5453;
+  return x - Math.floor(x);
+}
+
+const particlePositions = new Float32Array(COUNT * 3);
+const particleSpeeds = new Float32Array(COUNT);
+
+for (let i = 0; i < COUNT; i++) {
+  const angle = (i / COUNT) * Math.PI * 2;
+  const radius = 1.5 + pseudo(i, 1) * 2.5;
+  particlePositions[i * 3] = Math.cos(angle) * radius;
+  particlePositions[i * 3 + 1] = (pseudo(i, 2) - 0.5) * 3;
+  particlePositions[i * 3 + 2] = Math.sin(angle) * radius;
+  particleSpeeds[i] = 0.002 + pseudo(i, 3) * 0.004;
+}
 
 function Particles() {
   const ref = useRef<THREE.Points>(null);
-  const count = 120;
-
-  const [positions, speeds] = useMemo(() => {
-    const pos = new Float32Array(count * 3);
-    const spd = new Float32Array(count);
-    for (let i = 0; i < count; i++) {
-      const angle = (i / count) * Math.PI * 2;
-      const radius = 1.5 + Math.random() * 2.5;
-      pos[i * 3] = Math.cos(angle) * radius;
-      pos[i * 3 + 1] = (Math.random() - 0.5) * 3;
-      pos[i * 3 + 2] = Math.sin(angle) * radius;
-      spd[i] = 0.002 + Math.random() * 0.004;
-    }
-    return [pos, spd];
-  }, []);
 
   useFrame(({ clock }) => {
     if (!ref.current) return;
     ref.current.rotation.y = clock.getElapsedTime() * 0.04;
     const arr = ref.current.geometry.attributes.position.array as Float32Array;
-    for (let i = 0; i < count; i++) {
-      arr[i * 3 + 1] += speeds[i];
+    for (let i = 0; i < COUNT; i++) {
+      arr[i * 3 + 1] += particleSpeeds[i];
       if (arr[i * 3 + 1] > 2) arr[i * 3 + 1] = -2;
     }
     ref.current.geometry.attributes.position.needsUpdate = true;
@@ -38,8 +42,8 @@ function Particles() {
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
-          args={[positions, 3]}
-          count={count}
+          args={[particlePositions, 3]}
+          count={COUNT}
         />
       </bufferGeometry>
       <pointsMaterial

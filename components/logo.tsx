@@ -1,5 +1,3 @@
-import { siteConfig } from "@/lib/site-config";
-
 export function LogoMark({
   className = "h-12 w-12",
   large = false,
