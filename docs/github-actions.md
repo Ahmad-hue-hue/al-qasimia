@@ -46,6 +46,7 @@ The deploy job references a `production` environment (see [deployment environmen
 ```bash
 bun install --frozen-lockfile
 bun run lint
+bun run test
 bun run build
 ```
 
