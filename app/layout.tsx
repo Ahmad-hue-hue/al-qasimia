@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
-import { Amiri, Source_Sans_3 } from "next/font/google";
+import {
+  IBM_Plex_Sans,
+  Libre_Baskerville,
+  Scheherazade_New,
+} from "next/font/google";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -7,14 +11,21 @@ import { WhatsAppFloatButton } from "@/components/whatsapp-float-button";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
-const amiri = Amiri({
-  subsets: ["latin", "arabic"],
+const libreBaskerville = Libre_Baskerville({
+  subsets: ["latin"],
   weight: ["400", "700"],
   variable: "--font-display",
 });
 
-const sourceSans = Source_Sans_3({
+const scheherazade = Scheherazade_New({
+  subsets: ["arabic", "latin"],
+  weight: ["400", "700"],
+  variable: "--font-arabic",
+});
+
+const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
   variable: "--font-body",
 });
 
@@ -42,7 +53,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="sw" suppressHydrationWarning className={`${amiri.variable} ${sourceSans.variable} h-full`}>
+    <html
+      lang="sw"
+      suppressHydrationWarning
+      className={`${libreBaskerville.variable} ${scheherazade.variable} ${ibmPlexSans.variable} h-full`}
+    >
       <body className="min-h-full flex flex-col font-body antialiased">
         <ThemeProvider>
           <Navbar />

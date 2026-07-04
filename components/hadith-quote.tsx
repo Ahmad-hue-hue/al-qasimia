@@ -1,28 +1,25 @@
-import { Quotes } from "@phosphor-icons/react/dist/ssr";
 import { hadithQuote } from "@/lib/site-config";
 
 export function HadithQuote() {
   return (
     <section
       aria-label="Hadith kuhusu watu wa Qur'an"
-      className="relative overflow-hidden rounded-3xl border border-gold/30 bg-charcoal px-6 py-10 text-cream sm:px-10 sm:py-12"
+      className="relative border-y border-gold/25 bg-charcoal py-12 text-cream sm:py-16"
     >
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.07]"
-        style={{
-          backgroundImage:
-            "repeating-linear-gradient(45deg, #D4AF37 0, #D4AF37 1px, transparent 0, transparent 50%)",
-          backgroundSize: "12px 12px",
-        }}
-      />
-      <div className="relative mx-auto max-w-3xl text-center">
-        <Quotes weight="duotone" className="mx-auto h-10 w-10 text-gold" />
-        <p className="mt-6 font-display text-lg leading-relaxed sm:text-xl">
-          &ldquo;{hadithQuote.text}&rdquo;
-        </p>
-        <p className="mt-6 text-sm uppercase tracking-widest text-gold/80">
-          — {hadithQuote.source}
-        </p>
+      <div className="mx-auto flex max-w-4xl flex-col gap-6 px-4 sm:flex-row sm:gap-10 sm:px-6">
+        <div className="shrink-0 sm:w-28">
+          <p className="font-arabic text-3xl text-gold" dir="rtl" lang="ar">
+            حديث
+          </p>
+          <p className="mt-2 text-xs uppercase tracking-wide text-gold/70">
+            {hadithQuote.source}
+          </p>
+        </div>
+        <blockquote className="border-l border-gold/40 pl-6 sm:pl-8">
+          <p className="font-display text-lg leading-[1.75] sm:text-xl">
+            {hadithQuote.text}
+          </p>
+        </blockquote>
       </div>
     </section>
   );

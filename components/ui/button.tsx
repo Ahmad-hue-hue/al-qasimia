@@ -5,20 +5,20 @@ import { motion, type HTMLMotionProps } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 rounded-full font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        gold: "bg-gold text-charcoal hover:bg-gold-light shadow-md shadow-gold/20",
+        gold: "bg-gold text-charcoal hover:bg-gold-light",
         outline:
-          "border-2 border-gold/40 text-foreground hover:border-gold hover:bg-gold/10",
-        whatsapp: "bg-[#25D366] text-white hover:bg-[#1fb855] shadow-md",
+          "border border-gold/40 text-foreground hover:border-gold hover:bg-gold/10",
+        whatsapp: "bg-[#25D366] text-white hover:bg-[#1fb855]",
         ghost: "text-foreground hover:bg-gold/10",
       },
       size: {
         sm: "h-9 px-4 text-sm",
-        md: "h-11 px-6 text-base",
-        lg: "h-13 px-8 text-lg",
+        md: "h-11 px-5 text-base",
+        lg: "h-12 px-6 text-base",
       },
     },
     defaultVariants: {
@@ -30,9 +30,7 @@ const buttonVariants = cva(
 
 export interface ButtonProps
   extends Omit<HTMLMotionProps<"button">, "ref">,
-    VariantProps<typeof buttonVariants> {
-  asChild?: boolean;
-}
+    VariantProps<typeof buttonVariants> {}
 
 export function Button({
   className,
@@ -43,7 +41,6 @@ export function Button({
 }: ButtonProps) {
   return (
     <motion.button
-      whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
@@ -65,7 +62,6 @@ export function ButtonLink({
   return (
     <motion.a
       href={href}
-      whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       className={cn(buttonVariants({ variant, size, className }))}
       {...(props as HTMLMotionProps<"a">)}

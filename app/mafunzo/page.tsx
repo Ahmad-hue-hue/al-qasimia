@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { ProgramCard } from "@/components/program-card";
+import { OfferBadge, ProgramCard } from "@/components/program-card";
 import { Reveal } from "@/components/reveal";
+import { SectionHeading } from "@/components/section-heading";
 import { ButtonLink } from "@/components/ui/button";
 import { programs, siteConfig } from "@/lib/site-config";
 
@@ -13,52 +14,42 @@ export default function MafunzoPage() {
   const regular = programs.filter((p) => !p.highlight);
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
+    <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-16">
       <Reveal>
-        <p className="text-sm uppercase tracking-widest text-gold">Mafunzo</p>
-        <h1 className="mt-2 font-display text-4xl text-heading">
-          Programu zetu
-        </h1>
-        <p className="mt-4 max-w-2xl text-muted-foreground">
-          Mafunzo yetu yanalenga hifadhi kamili ya Qur&apos;an, tajwid sahihi, na
-          malezi ya Kiislamu — kwa njia rahisi na za kisasa.
-        </p>
+        <SectionHeading
+          title="Programu zetu"
+          description="Hifadhi kamili, tajwid sahihi, na malezi ya Kiislamu — kwa njia rahisi na za kisasa."
+        />
       </Reveal>
 
-      <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-12 space-y-8">
         {regular.map((program, i) => (
-          <Reveal key={program.title} delay={i * 0.08}>
+          <Reveal key={program.title} delay={i * 0.06}>
             <ProgramCard {...program} />
           </Reveal>
         ))}
       </div>
 
       {intensive && (
-        <Reveal delay={0.2}>
-          <section className="mt-14">
-            <h2 className="font-display text-2xl text-heading">
-              Kozi maalum ya miezi 6
-            </h2>
-            <p className="mt-2 text-muted-foreground">
-              Kwa vijana waliomaliza Kidato cha Nne (Form Four). Ada nafuu. Chaguo la
-              bweni au kutwa.
-            </p>
-            <div className="mt-6 max-w-xl">
+        <Reveal delay={0.15}>
+          <section className="mt-14 border-t border-gold/15 pt-12">
+            <SectionHeading
+              title="Kozi maalum ya miezi 6"
+              description="Kwa vijana waliomaliza Kidato cha Nne. Ada nafuu. Bweni au kutwa."
+            />
+            <div className="mt-8">
               <ProgramCard {...intensive} />
             </div>
           </section>
         </Reveal>
       )}
 
-      <Reveal delay={0.25}>
-        <div className="mt-12 rounded-2xl border border-gold/30 bg-gold/8 p-6 text-center sm:p-8">
-          <p className="font-semibold text-heading">
-            OFA: Lugha ya Kiarabu itafundishwa bure kabisa
-          </p>
+      <Reveal delay={0.2}>
+        <div className="mt-14 space-y-4">
+          <OfferBadge />
           <ButtonLink
             href={siteConfig.whatsapp.href()}
             variant="whatsapp"
-            className="mt-4"
             target="_blank"
             rel="noopener noreferrer"
           >

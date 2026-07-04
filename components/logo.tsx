@@ -1,38 +1,47 @@
 import { siteConfig } from "@/lib/site-config";
 
-export function LogoMark({ className = "h-12 w-12" }: { className?: string }) {
+export function LogoMark({
+  className = "h-12 w-12",
+  large = false,
+}: {
+  className?: string;
+  large?: boolean;
+}) {
+  const rays = Array.from({ length: 16 }, (_, i) => i * 22.5);
+
   return (
     <svg
-      viewBox="0 0 120 120"
+      viewBox="0 0 200 200"
       className={className}
       aria-hidden="true"
       fill="none"
     >
-      <circle cx="60" cy="60" r="56" stroke="#C9922E" strokeWidth="2" />
-      <circle cx="60" cy="60" r="48" stroke="#D4AF37" strokeWidth="1" opacity="0.5" />
-      {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => (
+      {rays.map((deg) => (
         <line
           key={deg}
-          x1="60"
-          y1="60"
-          x2={60 + 52 * Math.cos((deg * Math.PI) / 180)}
-          y2={60 + 52 * Math.sin((deg * Math.PI) / 180)}
-          stroke="#D4AF37"
-          strokeWidth="0.8"
-          opacity="0.35"
+          className={large ? "hero-ray" : undefined}
+          x1="100"
+          y1="100"
+          x2={100 + 88 * Math.cos((deg * Math.PI) / 180)}
+          y2={100 + 88 * Math.sin((deg * Math.PI) / 180)}
+          stroke="currentColor"
+          strokeWidth={large ? 1.2 : 0.9}
+          opacity={0.22}
         />
       ))}
+      <circle cx="100" cy="100" r="72" stroke="currentColor" strokeWidth="1.5" />
+      <circle cx="100" cy="100" r="62" stroke="currentColor" strokeWidth="0.75" opacity="0.45" />
+      <path d="M100 52 L118 88 L100 78 L82 88 Z" fill="currentColor" />
+      <rect x="86" y="88" width="28" height="36" rx="3" fill="currentColor" opacity="0.9" />
       <path
-        d="M60 28 L72 52 L60 46 L48 52 Z"
-        fill="#C9922E"
-      />
-      <rect x="52" y="52" width="16" height="22" rx="2" fill="#C9922E" opacity="0.85" />
-      <path
-        d="M44 78 Q60 88 76 78"
-        stroke="#E08B2E"
-        strokeWidth="1.5"
+        d="M72 132 Q100 148 128 132"
+        stroke="currentColor"
+        strokeWidth="2"
         fill="none"
+        opacity="0.7"
       />
+      <rect x="58" y="118" width="10" height="18" rx="1" fill="currentColor" opacity="0.5" />
+      <rect x="132" y="118" width="10" height="18" rx="1" fill="currentColor" opacity="0.5" />
     </svg>
   );
 }
@@ -40,15 +49,29 @@ export function LogoMark({ className = "h-12 w-12" }: { className?: string }) {
 export function LogoWithText({ compact = false }: { compact?: boolean }) {
   return (
     <div className="flex items-center gap-3">
-      <LogoMark className={compact ? "h-9 w-9" : "h-11 w-11"} />
+      <div className="text-gold">
+        <LogoMark className={compact ? "h-9 w-9" : "h-11 w-11"} />
+      </div>
       {!compact && (
         <div className="leading-tight">
-          <p className="font-display text-sm font-semibold text-heading sm:text-base">
+          <p className="font-display text-sm font-bold text-foreground sm:text-base">
             Al Qasimia
           </p>
           <p className="text-xs text-muted-foreground">Tahfidhul Qur&apos;an</p>
         </div>
       )}
+    </div>
+  );
+}
+
+export function HeroEmblem({ className }: { className?: string }) {
+  return (
+    <div
+      className={`relative flex items-center justify-center text-gold ${className ?? ""}`}
+      aria-hidden="true"
+    >
+      <div className="absolute inset-0 rounded-full bg-gold/10 blur-3xl" />
+      <LogoMark large className="relative h-48 w-48 sm:h-56 sm:w-56 lg:h-64 lg:w-64" />
     </div>
   );
 }

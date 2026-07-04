@@ -1,54 +1,48 @@
 import type { Metadata } from "next";
 import { Reveal } from "@/components/reveal";
+import { SectionHeading } from "@/components/section-heading";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Kuhusu",
 };
 
+const pillars = [
+  {
+    title: "Dhamira",
+    body: "Kuhifadhi na kuendeleza Qur'an kwa kufundisha vijana hifadhi kamili, tajwid sahihi, na nidhamu ya Kiislamu — ndani ya mazingira salama na yenye mpangilio wa bweni.",
+  },
+  {
+    title: "Dira",
+    body: "Kizazi cha huffadh (wahifadhi wa Qur'an) wenye tabia thabiti ya Kiislamu, waliotayari kubeba nuru ya Qur'an katika jamii zao.",
+  },
+  {
+    title: "Kaulimbiu",
+    body: `"${siteConfig.motto}"`,
+  },
+];
+
 export default function KuhusuPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-16">
       <Reveal>
-        <p className="text-sm uppercase tracking-widest text-gold">Kuhusu</p>
-        <h1 className="mt-2 font-display text-4xl text-heading">Kuhusu shule</h1>
-        <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-          Al Qasimia Tahfidhul Qur&apos;an ni chuo cha bweni na kutwa kwa vijana wa
-          kiume, kinacholenga hifadhi ya Qur&apos;an (hifdh) na kulea kizazi katika
-          nuru ya Qur&apos;an na tabia njema ya Kiislamu.
-        </p>
+        <SectionHeading
+          title="Kuhusu shule"
+          description="Al Qasimia Tahfidhul Qur'an ni chuo cha bweni na kutwa kwa vijana wa kiume, kinacholenga hifadhi ya Qur'an (hifdh) na kulea kizazi katika nuru ya Qur'an na tabia njema ya Kiislamu."
+        />
       </Reveal>
 
-      <div className="mt-12 space-y-10">
-        <Reveal delay={0.1}>
-          <article className="rounded-2xl border border-gold/20 bg-card p-6 sm:p-8">
-            <h2 className="font-display text-2xl text-heading">Dhamira</h2>
-            <p className="mt-4 leading-relaxed text-muted-foreground">
-              Kuhifadhi na kuendeleza Qur&apos;an kwa kufundisha vijana hifadhi
-              kamili, tajwid sahihi, na nidhamu ya Kiislamu — ndani ya mazingira
-              salama na yenye mpangilio wa bweni.
-            </p>
-          </article>
-        </Reveal>
-
-        <Reveal delay={0.15}>
-          <article className="rounded-2xl border border-gold/20 bg-card p-6 sm:p-8">
-            <h2 className="font-display text-2xl text-heading">Dira</h2>
-            <p className="mt-4 leading-relaxed text-muted-foreground">
-              Kizazi cha huffadh (wahifadhi wa Qur&apos;an) wenye tabia thabiti ya
-              Kiislamu, waliotayari kubeba nuru ya Qur&apos;an katika jamii zao.
-            </p>
-          </article>
-        </Reveal>
-
-        <Reveal delay={0.2}>
-          <article className="rounded-2xl border border-gold/20 bg-card p-6 sm:p-8">
-            <h2 className="font-display text-2xl text-heading">Kaulimbiu</h2>
-            <p className="mt-4 font-display text-xl text-heading">
-              &ldquo;{siteConfig.motto}&rdquo;
-            </p>
-          </article>
-        </Reveal>
+      <div className="mt-14 space-y-0 divide-y divide-gold/15 border-t border-gold/15">
+        {pillars.map((item, i) => (
+          <Reveal key={item.title} delay={i * 0.08}>
+            <article className="py-8">
+              <h2 className="font-display text-2xl text-foreground">{item.title}</h2>
+              <p className="mt-3 max-w-2xl leading-relaxed text-muted-foreground">
+                {item.body}
+              </p>
+            </article>
+          </Reveal>
+        ))}
       </div>
     </div>
   );

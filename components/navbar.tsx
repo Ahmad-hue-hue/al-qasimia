@@ -26,10 +26,10 @@ export function Navbar() {
               key={item.href}
               href={item.href}
               className={cn(
-                "rounded-full px-4 py-2 text-sm font-medium transition-colors",
+                "px-3 py-2 text-sm font-medium transition-colors",
                 pathname === item.href
-                  ? "bg-gold/15 text-heading"
-                  : "text-foreground/80 hover:bg-gold/10 hover:text-heading",
+                  ? "text-heading underline decoration-gold decoration-2 underline-offset-8"
+                  : "text-foreground/75 hover:text-heading",
               )}
             >
               {item.label}
