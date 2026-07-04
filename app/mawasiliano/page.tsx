@@ -5,7 +5,6 @@ import {
   Phone,
   WhatsappLogo,
 } from "@phosphor-icons/react/dist/ssr";
-import { ContactForm } from "@/components/contact-form";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { ButtonLink } from "@/components/ui/button";
@@ -17,7 +16,7 @@ export default function MawasilianoPage() {
       <Reveal>
         <SectionHeading
           title="Wasiliana nasi"
-          description="Tupo Nzuguni, Dodoma. Piga simu, tuma ujumbe wa WhatsApp, au tembelea ukurasa wetu wa mitandao ya kijamii."
+          description="Tupo Nzuguni, Dodoma. Piga simu, wasiliana kupitia WhatsApp, au tembelea ukurasa wetu wa mitandao ya kijamii."
         />
       </Reveal>
 
@@ -59,7 +58,7 @@ export default function MawasilianoPage() {
               rel="noopener noreferrer"
             >
               <WhatsappLogo weight="fill" className="h-5 w-5" aria-hidden="true" />
-              Tuma ujumbe WhatsApp
+              WhatsApp
             </ButtonLink>
 
             <div className="flex flex-wrap gap-3 pt-2">
@@ -85,10 +84,6 @@ export default function MawasilianoPage() {
           </section>
         </Reveal>
       </div>
-
-      <Reveal delay={0.2}>
-        <ContactForm />
-      </Reveal>
     </div>
   );
 }
