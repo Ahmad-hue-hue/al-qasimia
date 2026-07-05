@@ -5,7 +5,7 @@ describe("WhatsApp contact link", () => {
   it("opens chat with the configured number and pre-filled Swahili greeting", () => {
     const href = siteConfig.whatsapp.href();
 
-    expect(href).toMatch(/^https:\/\/wa\.me\/255712326190\?text=/);
+    expect(href).toMatch(/^https:\/\/wa\.me\/255712328190\?text=/);
     expect(decodeURIComponent(href.split("text=")[1])).toBe(
       siteConfig.whatsapp.message,
     );
@@ -17,7 +17,7 @@ describe("School contact details", () => {
     expect(siteConfig.phones).toHaveLength(3);
     expect(siteConfig.phones.map((p) => p.number)).toEqual([
       "+255 674 248 190",
-      "+255 712 326 190",
+      "+255 712 328 190",
       "+255 716 200 414",
     ]);
   });
